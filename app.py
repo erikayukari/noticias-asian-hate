@@ -27,8 +27,8 @@ def noticias():
   resultado = googlenews.result() 
   return pd.DataFrame(resultado)
   lista = df['link'].tolist()
-  lista
-  return render_template("noticias.html", dados = lista)
+  lista_final = ''.join(lista)
+  return render_template("noticias.html", dados = lista_final)
   
 
 
