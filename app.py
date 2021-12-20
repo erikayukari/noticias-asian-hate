@@ -22,8 +22,8 @@ def noticias():
   googlenews.get_news("'preconceito amarelo'") #seta o primeiro termo de busca 
   resultado = googlenews.result() 
   df = pd.DataFrame(resultado)
-  df.drop(columns=['desc', 'datetime', 'img', 'media']) #elimina colunas que não interessam da tabela 
-  df
+  df1= df.drop(columns=['desc', 'datetime', 'img', 'media']) #elimina colunas que não interessam da tabela 
+  df1
   return render_template("noticias.html")
 
 
