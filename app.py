@@ -28,7 +28,7 @@ def noticias():
   df = pd.DataFrame(resultado)
   lista = df['link'].tolist()
   lista
-  if not noticias 
+  if not lista 
     return None
   
 
