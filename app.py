@@ -28,7 +28,7 @@ def noticias():
       df = pd.DataFrame(resultado)
       df1= df.drop(columns=['desc', 'datetime', 'img', 'media']) #elimina colunas que não interessam da tabela 
       df1
-  return render_template('noticias.html', tables=[df1.to_html(classes='data', header="true")])
+      return render_template('noticias.html', tables=[df1.to_html(classes='data', header="true")])
 
 
 
