@@ -18,6 +18,7 @@ def sobre():
 @app.route('/noticias')
 def news():
   googlenews = GoogleNews()
+  googlenews.set_lang('pt-br')
   googlenews.set_time_range(start='31/12/2019', end='31/12/2021') #seleciona a janela temporal da busca
   googlenews.get_news("'preconceito amarelo'") #seta o primeiro termo de busca 
   googlenews.get_news("'preconceito asiático'") 
