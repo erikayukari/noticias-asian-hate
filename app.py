@@ -26,10 +26,8 @@ def noticias():
   googlenews.get_news("'ódio contra asiáticos'")
   resultado = googlenews.result() 
   df = pd.DataFrame(resultado)
-
-  return render_template('noticias.html', tables=[df.to_html(classes='data', header="true")])
-  if __name__ == '__main__':
-    app.run()
+  lista = df['link'].tolist()
+  
 
 
 
