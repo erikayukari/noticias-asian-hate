@@ -15,7 +15,7 @@ def hello_world():
 def sobre():
     return render_template("sobre.html")
 
-@app.route('/noticias', methods=("POST", "GET"))
+@app.route('/noticias')
 def noticias():
   googlenews = GoogleNews()
   googlenews.set_time_range(start='31/12/2019', end='31/12/2019') #seleciona a janela temporal da busca
@@ -25,10 +25,8 @@ def noticias():
   googlenews.get_news("'violência contra asiáticos'")
   googlenews.get_news("'ódio contra asiáticos'")
   resultado = googlenews.result() 
-  df = pd.DataFrame(resultado)
-  dados = lista
-  lista = df['link'].tolist()
-  return render_template("noticias.html", dados = lista)
+  return pd.DataFrame(resultado)
+  return render_template("noticias.html", dados = resultado)
   
 
 
