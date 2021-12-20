@@ -6,7 +6,7 @@ from flask import Flask, render_template
 from GoogleNews import GoogleNews 
 app = Flask(__name__)
 
-def noticias():
+def news():
   googlenews = GoogleNews()
   googlenews.set_time_range(start='31/12/2019', end='31/12/2019') #seleciona a janela temporal da busca
   googlenews.get_news("'preconceito amarelo'") #seta o primeiro termo de busca 
@@ -29,6 +29,7 @@ def sobre():
     return render_template("sobre.html")
 
 @app.route('/noticias')
+def raspador = news()
   return render_template("noticias.html", dados = lista_final)
   
 
