@@ -23,7 +23,8 @@ def noticias():
   resultado = googlenews.result() 
   df = pd.DataFrame(resultado)
   df.drop(columns=['desc', 'datetime', 'img', 'media']) #elimina colunas que não interessam da tabela 
-  return df
+  df
+  return render_template("noticias.html")
 
 
 
