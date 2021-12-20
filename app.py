@@ -28,7 +28,8 @@ def noticias():
   df = pd.DataFrame(resultado)
 
   return render_template('noticias.html', tables=[df.to_html(classes='data', header="true")])
-
+  if __name__ == '__main__':
+    app.run()
 
 
 
