@@ -18,7 +18,7 @@ def sobre():
 @app.route('/noticias', methods=("POST", "GET"))
 def noticias():
   googlenews = GoogleNews()
-  googlenews.set_time_range(start='31/12/2019', end='17/12/2021') #seleciona a janela temporal da busca
+  googlenews.set_time_range(start='31/12/2019', end='31/12/2019') #seleciona a janela temporal da busca
   googlenews.get_news("'preconceito amarelo'") #seta o primeiro termo de busca 
   googlenews.get_news("'preconceito asiático'") 
   googlenews.get_news("'vírus chinês'")
