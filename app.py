@@ -27,6 +27,7 @@ def noticias():
   resultado = googlenews.result() 
   df = pd.DataFrame(resultado)
   lista = df['link'].tolist()
+  lista
   
 
 
