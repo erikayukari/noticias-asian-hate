@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
-{% block titulo %}Preconceito e violência contra asiáticos durante a pandemia{% endblock %}
-{% block cabecalho %}Raspagem de notícias no Google News entre 31 de dezembro de 2019 e 31 de dezembro de 2021{% endblock %}
+{% block titulo %} Notícias Asian Hate{% endblock %}
+{% block cabecalho %} Registro: preconceito e a imprensa brasileira na pandemia {% endblock %}
 {% block conteudo %}
  <a href="/">Página inicial</a>
  <a href="/sobre">Sobre esse site</a>
       <p> 
-      <b> Dados completos: </b> 
-</p> <header> Lista de notícias</header> 
-<table><tr><th>df</th></tr></table>
-
+      <b> Coleta de notícias no Google News entre 31 de dezembro de 2019 e 31 de dezembro de 2021 </b> 
+<p> {{ lista }} </p>
 {% endblock %}
