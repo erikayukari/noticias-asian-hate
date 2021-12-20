@@ -3,12 +3,11 @@ import pandas as pd
 import os
 from pandas import json_normalize 
 from flask import Flask, render_template
-
+from GoogleNews import GoogleNews 
 app = Flask(__name__)
 
-#início raspagem -----------------------------------
-!pip install GoogleNews #instala a biblioteca      
-from GoogleNews import GoogleNews 
+#início raspagem -----------------------------------   
+
 googlenews = GoogleNews()
 googlenews.set_time_range(start='31/12/2019', end='17/12/2021') #seleciona a janela temporal da busca
 googlenews.get_news("'preconceito amarelo'") #seta o primeiro termo de busca 
