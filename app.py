@@ -6,16 +6,6 @@ from flask import Flask, render_template
 from GoogleNews import GoogleNews 
 app = Flask(__name__)
 
-
-@app.route("/")
-def hello_world():
-    return render_template("home.html")
-
-@app.route("/sobre")
-def sobre():
-    return render_template("sobre.html")
-
-@app.route('/noticias')
 def noticias():
   googlenews = GoogleNews()
   googlenews.set_time_range(start='31/12/2019', end='31/12/2019') #seleciona a janela temporal da busca
@@ -28,6 +18,17 @@ def noticias():
   return pd.DataFrame(resultado)
   lista = df['link'].tolist()
   lista_final = ''.join(lista)
+
+
+@app.route("/")
+def hello_world():
+    return render_template("home.html")
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
+@app.route('/noticias')
   return render_template("noticias.html", dados = lista_final)
   
 
