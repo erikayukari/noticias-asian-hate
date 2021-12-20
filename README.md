@@ -1,5 +1,7 @@
 # Busca e captura automatizada de notícias no Google News centradas no tema do preconceito e violência contra asiáticos durante a pandemia - Érika Yukari 
 
+### Acesse: https://noticias-asian-hate.herokuapp.com/ 
+
 ## Introdução 
 Projeto final da Disciplina Algoritmos de Automação - Professor Álvaro Justen, 2º trimestre do Master em Jornalismo de Dados, Automação e Data Storytelling do Insper 
 
