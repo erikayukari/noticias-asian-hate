@@ -29,7 +29,7 @@ def news():
   df = pd.DataFrame(resultado) #coloca o resultado em uma tabela 
   #lista = df['link'].tolist() # seleciona apenas a coluna de links de notícias da tabela e os insere em uma lista
   #lista_final = ''.join(lista) # transforma coluna de links em uma única string [texto] para importá-la e apresentá-la no site 
-  return render_template("noticias.html", dados = resultado.to_html()) # chama a variável lista_final para ser mostrada nesta seção do site 
+  return render_template("noticias.html", dados = df.to_html()) # chama a variável lista_final para ser mostrada nesta seção do site 
   
 
 
