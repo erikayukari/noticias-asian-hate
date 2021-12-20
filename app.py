@@ -28,7 +28,7 @@ def noticias():
   df = pd.DataFrame(resultado)
   dados = lista
   lista = df['link'].tolist()
-  return render_template("noticias.html")
+  return render_template("noticias.html", dados = lista)
   
 
 
