@@ -34,7 +34,7 @@ def news():
     linha = f'<a href="{materia.link}">{materia.title}</a><br>'
     dados = dados_em_html
     dados_em_html = dados + linha
-  return render_template("noticias.html", dados = dados_em_html.to_html()) # chama a variável lista_final para ser mostrada nesta seção do site 
+  return render_template("noticias.html", dados = dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
   
   
 
