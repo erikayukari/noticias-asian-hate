@@ -27,7 +27,9 @@ def news():
   googlenews.get_news("'preconceito asiático'") 
   googlenews.get_news("'racismo asiático'")
   googlenews.get_news("'discriminação contra asiáticos'")
+  googlenews.get_news("'ataques a asiáticos'")
   googlenews.get_news("'violência contra asiáticos'")
+  googlenews.get_news("'violência contra orientais'")
   googlenews.get_news("'ódio contra asiáticos'") #seta o último termo de busca 
   resultado = googlenews.result() 
 
