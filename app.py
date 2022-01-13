@@ -28,10 +28,12 @@ def news():
   googlenews.get_news("'violência contra asiáticos'")
   googlenews.get_news("'ódio contra asiáticos'") #seta o último termo de busca 
   resultado = googlenews.result() 
+  dados_em_html = ""
+  for materia in df.itertuples():
+    linha = f'<a href="{materia.url}">{materia.title}</a><br>'
+    dados_em_html = dados + linha
+  return render_template("noticias.html", dados=dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
   
-  df = pd.DataFrame(resultado) #coloca o resultado em uma tabela 
-  df1= df.drop(columns=['desc', 'datetime', 'img', 'media']) #elimina colunas que não interessam da tabela 
-  return render_template("noticias.html", dados = df1.to_html()) # chama a variável lista_final para ser mostrada nesta seção do site 
   
 
 
