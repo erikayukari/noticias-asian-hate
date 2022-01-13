@@ -31,7 +31,7 @@ def news():
   df = pd.DataFrame(resultado) #coloca o resultado em uma tabela
   dados_em_html = ""
   for materia in df.itertuples():
-    linha = f'<a href="{materia.url}">{materia.title}</a><br>'
+    linha = f'<a href="{materia.link}">{materia.title}</a><br>'
     dados_em_html = dados + linha
   return render_template("noticias.html", dados=dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
   
