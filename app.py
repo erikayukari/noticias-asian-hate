@@ -34,7 +34,7 @@ def news():
   df = pd.DataFrame(resultado) #coloca o resultado em uma tabela
   dados_em_html = "" #cria uma lista vazia para inserir o resultado 
   for materia in df.itertuples(): #possibilita que o código manipule o formato em que os dados serão visualizados na lista 
-    linha = f'<a href="{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
+    linha = f'<a href="https://{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
     dados = dados_em_html
     dados_em_html = dados + linha
   return render_template("noticias.html", dados = dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
