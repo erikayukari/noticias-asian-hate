@@ -28,6 +28,7 @@ def news():
   googlenews.get_news("'violência contra asiáticos'")
   googlenews.get_news("'ódio contra asiáticos'") #seta o último termo de busca 
   resultado = googlenews.result() 
+  df = pd.DataFrame(resultado) #coloca o resultado em uma tabela
   dados_em_html = ""
   for materia in df.itertuples():
     linha = f'<a href="{materia.url}">{materia.title}</a><br>'
