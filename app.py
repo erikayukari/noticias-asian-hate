@@ -4,6 +4,7 @@ import os
 from pandas import json_normalize 
 from flask import Flask, render_template
 from GoogleNews import GoogleNews 
+from datetime import date
 app = Flask(__name__)
 
 
@@ -20,7 +21,7 @@ def news():
     
   googlenews = GoogleNews()
   googlenews.set_lang('pt-br') #seleciona apenas resultados  língua portuguesa
-  googlenews.set_time_range(start='31/12/2019', end='14/01/2022') #seleciona a janela temporal da busca
+  googlenews.set_time_range(start='31/12/2019', end=date.today()) #seleciona a janela temporal da busca
 
   googlenews.get_news("'vírus chinês'") #seta o primeiro termo de busca 
   googlenews.get_news("'preconceito amarelo'") 
@@ -36,7 +37,7 @@ def news():
   df = pd.DataFrame(resultado) #coloca o resultado em uma tabela
   dados_em_html = "" #cria uma lista vazia para inserir o resultado 
   for materia in df.itertuples(): #possibilita que o código manipule o formato em que os dados serão visualizados na lista 
-    linha = f'{materia.date}__________________{materia.site}__________________<a href="https://{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
+    linha = f'<a href="https://{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
     dados = dados_em_html
     dados_em_html = dados + linha
   return render_template("noticias.html", dados = dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
