@@ -47,6 +47,7 @@ def news():
 @app.route('/analise')
 
 def analises():
+    return render_template("analises.html")
     nltk.download('punkt') 
     
     #String text pega todos os títulos do arquivo
