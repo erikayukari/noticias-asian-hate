@@ -5,5 +5,5 @@
 {% block conteudo %}
 <a href="/">Página inicial</a>
 <a href="/analise">{{analises}}</a> 
-<img src="dist.png">
+<img src="{{ url_for('static', filename='images/dist.png') }}" />
 {% endblock %}
