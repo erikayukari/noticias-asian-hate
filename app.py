@@ -47,56 +47,6 @@ def news():
 @app.route('/analise')
 
 def analises():
+    
     return render_template("analises.html")
-    nltk.download('punkt') 
     
-    #String text pega todos os títulos do arquivo
-    text = ''
-    for index, row in dataframe.iterrows():
-        text = text + row['title'].lower() + ' ' 
-        
-    from nltk.tokenize import word_tokenize
-    tokenized_word=word_tokenize(text)
-    print(tokenized_word)
-    
-    from nltk.probability import FreqDist
-    fdist = FreqDist(tokenized_word)
-    print(fdist)
-    fdist.most_common(2)
-    
-    
-    # Frequency Distribution Plot
-    import matplotlib.pyplot as plt
-    fdist.plot(30,cumulative=False)
-    plt.show()
-    
-    nltk.download('stopwords')
-    from nltk.corpus import stopwords
-    stop_words=set(stopwords.words("portuguese"))
-    print(stop_words)
-    
-    
-    #tokenized_sent = ['Hello', 'Mr.', 'Smith', ',', 'how', 'are', 'you', 'doing', 'today', '?']
-    tokenized_sent = tokenized_word
-    filtered_sent=[]
-    for w in tokenized_sent:
-    if w not in stop_words:
-        filtered_sent.append(w)
-    print("Tokenized Sentence:",tokenized_sent)
-    print("Filterd Sentence:",filtered_sent)
-    
-    # Frequency Distribution Plot
-    fdist = FreqDist(filtered_sent)
-    print(fdist)
-    fdist.plot(30,cumulative=False)
-    plt.show()
-
-    filtered_sent=[]
-    for w in tokenized_sent:
-    if w not in stop_words:
-        filtered_sent.append(w)
-# Frequency Distribution Plot
-    fdist = FreqDist(filtered_sent)
-    fdist.plot(30,cumulative=False)
-    plt.show()
-
