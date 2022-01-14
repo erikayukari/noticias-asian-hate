@@ -1,5 +1,3 @@
-
-import nltk
 import pandas as pd
 import os
 from pandas import json_normalize 
