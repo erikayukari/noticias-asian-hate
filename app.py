@@ -23,3 +23,4 @@ def news():
 @app.route('/get_news')
 def get_news():
     return get_google_news()
+
