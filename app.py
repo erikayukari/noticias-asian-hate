@@ -18,5 +18,8 @@ def sobre():
 
 @app.route('/noticias')
 def news():
-    dados_em_html = get_google_news()
-    return render_template("noticias.html", dados = dados_em_html) 
+    return render_template("noticias.html") 
+
+@app.route('/get_news')
+def get_news():
+    return get_google_news()
