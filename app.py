@@ -46,5 +46,5 @@ def news():
 
 def analises():
     
-    return render_template("analises.html")
+    return render_template("analise.html")
     
