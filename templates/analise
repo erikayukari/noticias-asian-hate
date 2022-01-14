@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Análise{% endblock %}
+{% block cabecalho %}--------{% endblock %}
+{% block conteudo %}
+<a href="/">Página inicial</a>
+<a href="/noticias">{{analises}}</a> 
+{% endblock %}
