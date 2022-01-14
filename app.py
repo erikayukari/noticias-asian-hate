@@ -1,4 +1,5 @@
 
+import nltk
 import pandas as pd
 import os
 from pandas import json_normalize 
@@ -37,12 +38,64 @@ def news():
   df = pd.DataFrame(resultado) #coloca o resultado em uma tabela
   dados_em_html = "" #cria uma lista vazia para inserir o resultado 
   for materia in df.itertuples(): #possibilita que o código manipule o formato em que os dados serão visualizados na lista 
-    linha = f'<a href="https://{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
+    linha = f'{materia.date}______{materia.site}______<a href="https://{materia.link}">{materia.title}</a><br>' #coloca o título e o link em cada linha da lista
     dados = dados_em_html
     dados_em_html = dados + linha
   return render_template("noticias.html", dados = dados_em_html) # chama a variável lista_final para ser mostrada nesta seção do site 
   
   
+@app.route('/analise')
 
+def analises():
+    nltk.download('punkt') 
+    
+    #String text pega todos os títulos do arquivo
+    text = ''
+    for index, row in dataframe.iterrows():
+        text = text + row['title'].lower() + ' ' 
+        
+    from nltk.tokenize import word_tokenize
+    tokenized_word=word_tokenize(text)
+    print(tokenized_word)
+    
+    from nltk.probability import FreqDist
+    fdist = FreqDist(tokenized_word)
+    print(fdist)
+    fdist.most_common(2)
+    
+    
+    # Frequency Distribution Plot
+    import matplotlib.pyplot as plt
+    fdist.plot(30,cumulative=False)
+    plt.show()
+    
+    nltk.download('stopwords')
+    from nltk.corpus import stopwords
+    stop_words=set(stopwords.words("portuguese"))
+    print(stop_words)
+    
+    
+    #tokenized_sent = ['Hello', 'Mr.', 'Smith', ',', 'how', 'are', 'you', 'doing', 'today', '?']
+    tokenized_sent = tokenized_word
+    filtered_sent=[]
+    for w in tokenized_sent:
+    if w not in stop_words:
+        filtered_sent.append(w)
+    print("Tokenized Sentence:",tokenized_sent)
+    print("Filterd Sentence:",filtered_sent)
+    
+    # Frequency Distribution Plot
+    fdist = FreqDist(filtered_sent)
+    print(fdist)
+    fdist.plot(30,cumulative=False)
+    plt.show()
 
+    filtered_sent=[]
+    for w in tokenized_sent:
+    if w not in stop_words:
+        filtered_sent.append(w)
+# Frequency Distribution Plot
+    fdist = FreqDist(filtered_sent)
+    fdist.plot(30,cumulative=False)
+    plt.show()
 
