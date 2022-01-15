@@ -1,12 +1,87 @@
 {% extends 'base.html' %}
 
 {% block titulo %} Notícias - Asian Hate{% endblock %}
+
 {% block cabecalho %} Registros de notícias sobre preconceito contra população de origem asiática na imprensa brasileira durante os 2 primeiros anos da pandemia da COVID-19 {% endblock %}
+
 {% block conteudo %}
- <a href="/">Página inicial</a>
- <a href="/sobre">Sobre esse site</a>
-<a href="/analise">Análise</a>
-      <p> 
-      <b> Coleta de notícias no Google News entre 31 de dezembro de 2019 até a data de hoje. </b> 
-<p> {{ dados|safe }} </p>
+  <p> 
+    <b> Coleta de notícias no Google News entre 31 de dezembro de 2019 e 31 de dezembro de 2021 </b> 
+  </p>
+  <div id="scroller" class="row row-cols-1 row-cols-md-2 g-4">
+    <template id="post_template">
+      <div class="card" style="width: 18rem;">
+        <a href="..." id="link"><img src="..." class="card-img-top" alt="..." id="img"></a>
+        <div class="card-body">
+            <p class="card-text" id="desc"></p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="site"></li>
+              <li class="list-group-item" id="date"></li>
+            </ul>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <div class="d-flex justify-content-center mb-3" id="sentinel">
+    <div class="spinner-border" role="status"> </div>
+  </div>
+
+  <script>
+
+    var scroller = document.querySelector("#scroller");
+    var template = document.querySelector('#post_template');
+    var sentinel = document.querySelector('#sentinel');
+
+    var counter = 0;
+    var di = new Date();
+    var de = new Date();
+    de.setDate(di.getDate() - 7);
+
+    function loadItems() {
+      
+      if(counter > 0){
+        di.setDate(di.getDate() - 8);
+        de.setDate(di.getDate() - 7);
+      }
+
+      fetch(`/get_news?c=${counter}&di=${di.toISOString().split('T')[0]}&de=${de.toISOString().split('T')[0]}`).then((response) => {
+        response.json().then((data) => {
+
+          if (!data.length) {
+
+            sentinel.innerHTML = "Näo há mais notícias";
+            return;
+          }
+
+          for (var i = 0; i < data.length; i++) {
+
+            let template_clone = template.content.cloneNode(true);
+
+            template_clone.querySelector("#desc").innerHTML = `${data[i]['title']}`;
+            template_clone.querySelector("#site").innerHTML = `${data[i]['site']}`;
+            template_clone.querySelector("#date").innerHTML = `${data[i]['date']}`;
+            template_clone.querySelector("#link").setAttribute("href", `https://${data[i]['link']}`);
+            template_clone.querySelector("#img").setAttribute("src", `${data[i]['img']}`);
+            template_clone.querySelector("#img").setAttribute("alt", `${data[i]['title']}`);
+            
+
+            scroller.appendChild(template_clone);
+
+            counter += 1;
+          }
+        })
+      })
+    }
+
+    var intersectionObserver = new IntersectionObserver(entries => {
+      if (entries[0].intersectionRatio <= 0) {
+        return;
+      }
+      
+      loadItems();
+    });
+
+    intersectionObserver.observe(sentinel);
+  </script>
 {% endblock %}
