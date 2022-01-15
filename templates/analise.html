@@ -5,5 +5,9 @@
 {% block conteudo %}
 <a href="/">Página inicial</a>
 <a href="/analise">{{analises}}</a> 
+<p>Frequência de Palavras nos Títulos das Notícias</p>
 <img src="{{ url_for('static', filename='images/dist.png') }}" />
+<br>
+<p>Frequência de Palavras nos Títulos das Notícias (sem stopwords)</p>
+<img src="{{ url_for('static', filename='images/dist2.png') }}" />
 {% endblock %}
